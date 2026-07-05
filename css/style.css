@@ -1,0 +1,479 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CORES (SISTEMA DE DESIGN PRETO E OURO)
+   ========================================================================== */
+:root {
+    --primary: #FFD700;       /* Amarelo Ouro */
+    --secondary: #000000;     /* Preto Puro */
+    --bg-dark: #121212;       /* Preto de Fundo */
+    --bg-light: #ffa200;
+    --white: #FFFFFF;
+    --text-dark: #333;
+    --text-light-muted: #cccccc;
+    --text-muted: #8e8e93;
+
+    --font-main: 'Montserrat', sans-serif;
+    --font-title: 'Oswald', sans-serif;
+    
+    --transition-smooth: all 0.3s ease;
+}
+
+/* ==========================================================================
+   2. RESET E ESTILOS BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Trava qualquer vazamento ou rolagem lateral */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--white);
+    color: var(--secondary);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Personalização da Barra de Rolagem */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ==========================================================================
+   3. HEADER & NAVBAR (PRETA ABSOLUTA E SIMPLES)
+   ========================================================================== */
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #000000 !important; /* Força o preto 100% opaco */
+    z-index: 1000;
+    border-bottom: 3px solid var(--primary);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo-wrapper img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navigation ul li a {
+    color: var(--white) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+}
+
+.navigation ul li a:not(.btn-cta):hover {
+    color: var(--primary) !important;
+}
+
+/* BOTÃO CTA DE ORÇAMENTO - LÓGICA SIMPLES E SEGURA */
+.navigation ul li a.btn-cta {
+    display: inline-block;
+    background-color: #FFD700 !important; /* Fundo ouro sólido */
+    color: #000000 !important;           /* Texto preto bem visível */
+    padding: 10px 20px !important;       /* Espaçamento ideal */
+    border-radius: 4px !important;       /* Cantos retos conforme o seu original */
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    transition: var(--transition-smooth) !important;
+    border: none !important;
+}
+
+.navigation ul li a.btn-cta:hover {
+    background-color: #cfa203 !important; /* Muda para branco limpo no hover */
+    color: #000000 !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. CARROSSEL INFINITO (PERFEITAMENTE COLADO NO DESKTOP)
+   ========================================================================== */
+.promo-container {
+    margin-top: 80px; /* Alinhado exatamente com os 80px de altura da navbar fixa */
+    overflow: hidden;
+    width: 100%;
+    padding: 40px 0 20px 0; /* Ajuste fino para colar mantendo a elegância */
+    position: relative;
+    background: var(--bg-dark);
+}
+
+.promo-container::before,
+.promo-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.promo-container::before { left: 0; background: linear-gradient(to right, var(--bg-dark), transparent); }
+.promo-container::after { right: 0; background: linear-gradient(to left, var(--bg-dark), transparent); }
+
+.promo {
+    display: flex;
+    width: max-content;
+    gap: 40px;
+    animation: rolarInfinito 30s linear infinite;
+}
+
+.promo:hover {
+    animation-play-state: paused;
+}
+
+.promo img {
+    width: 320px;
+    height: 450px;
+    object-fit: cover;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.promo img:hover {
+    transform: scale(1.02);
+}
+
+@keyframes rolarInfinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   5. HERO & BLOCOS DE IMPACTO
+   ========================================================================== */
+.hero-text-container {
+    background-color: #000000;
+    color: #ffffff;
+    border-left: 20px solid #ffcc00; 
+    box-sizing: border-box; 
+    overflow-x: hidden;
+    margin: 40px auto;
+    width: 95%;
+    max-width: 1100px;
+    padding: 40px 20px;
+    transition: all 0.3s ease;
+}
+
+.hero-text-container h1 {
+    font-family: var(--font-main);
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+.hero-text-container p {
+    color: #cccccc;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.yellow-line { 
+    width: 60px; 
+    height: 4px; 
+    background: var(--primary); 
+    margin: 15px auto; 
+}
+
+/* ==========================================================================
+   6. FILTRO DE COMPONENTES
+   ========================================================================== */
+.filter-wrapper {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.filter-wrapper label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--secondary);
+}
+
+#service-filter {
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+}
+
+#service-filter:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); 
+}
+
+/* ==========================================================================
+   7. GRELHA DE SERVIÇOS E LAYOUTS
+   ========================================================================== */
+.section-container { 
+    padding: 30px 5%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.title-impact {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+}
+
+.title-impact::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+}
+
+.services-list { display: flex; flex-direction: column; gap: 60px; }
+.service-item { display: flex; align-items: center; gap: 50px; margin-top: 50px; }
+.service-item.reverse { flex-direction: row-reverse; }
+
+.s-img { flex: 1.2; height: 350px; border-radius: 10px; overflow: hidden; }
+.s-text { flex: 1; }
+
+.s-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.s-text h4 { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--secondary); }
+.s-text p { font-size: 1.05rem; line-height: 1.8; color: #666; }
+
+/* Sobre Nós */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.img-inner img { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; border-left: 8px solid var(--primary); }
+
+/* ==========================================================================
+   8. SECÇÃO DE AVALIAÇÕES MODERNIZADA COM HOVER LUMINOSO
+   ========================================================================== */
+.reviews-section {
+    background-color: var(--bg-dark);
+    padding: 60px 0;
+    margin-top: 40px;
+}
+
+.reviews-section .hero-text-container {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-left-color: var(--primary);
+    margin-bottom: 50px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.review-card {
+    background: #121212;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.review-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    filter: grayscale(35%) brightness(85%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.review-card:hover img {
+    filter: grayscale(0%) brightness(100%);
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   9. RODAPÉ SIMÉTRICO (LOGO NO CENTRO)
+   ========================================================================== */
+.footer { 
+    background: var(--secondary); 
+    color: white; 
+    padding: 60px 5% 20px; 
+    text-align: center; 
+}
+
+.footer-grid { 
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    gap: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Obriga a logo a ficar na sua própria linha ao centro */
+    margin: 15px auto;
+}
+
+.footer-logo-wrapper img { 
+    height: 50px; 
+    width: auto;
+    object-fit: contain;
+}
+
+.copy {
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   10. BOTÕES FLUTUANTES (FAB)
+   ========================================================================== */
+.fab-wrapper { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
+.fab-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }
+.whatsapp { background: #25d366; }
+.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+
+/* ==========================================================================
+   11. ADAPTAÇÕES RESPONSIVAS AJUSTADAS (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    body {
+        position: relative;
+    }
+
+    /* BARRA DE NAVEGAÇÃO COMPACTA NO MOBILE */
+    .header-container { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 10px; 
+    }
+    .logo-wrapper img { height: 45px; }
+    .navigation ul { gap: 10px; margin-top: 10px; }
+    .navigation ul li a { font-size: 0.75rem; }
+    .btn-cta { padding: 0.5rem 1rem !important; font-size: 0.75rem !important; }
+
+    /* CORREÇÃO DO CARROSSEL: Agrupa-se perfeitamente colado perto da navbar mobile sem espaços vazios */
+    .promo-container {
+        margin-top: 105px !important; /* Altura calculada dinamicamente para o topo do telemóvel */
+        padding: 20px 0;
+    }
+    .promo { gap: 10px; }
+    .promo img { width: 240px; height: 340px; }
+
+    /* BLOCOS DE TEXTO HERO */
+    .hero-text-container {
+        border-left: 15px solid #ffcc00; 
+        padding: 30px 15px;
+        width: 100%;
+    }
+    .hero-text-container h1 { font-size: 1.5rem; }
+
+    /* AJUSTE DE GRIDS DE CONTEÚDO */
+    .grid-2, .grid-3 { grid-template-columns: 1fr; text-align: center; }
+    .service-item, .service-item.reverse { flex-direction: column; gap: 20px; }
+    .img-inner img, .s-img { height: 280px; }
+    .img-inner { border-left: none; border-bottom: 8px solid var(--primary); }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-grid { flex-direction: column; align-items: center; }
+    .fab-btn { width: 50px; height: 50px; font-size: 20px; }
+}
+
+/* Celulares pequenos (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .navigation ul { gap: 8px; }
+    
+    /* Mantém colado e ajustado para ecrãs muito reduzidos */
+    .promo-container {
+        margin-top: 115px !important;
+    }
+    .promo img {
+        width: 200px;
+        height: 280px;
+    }
+}
