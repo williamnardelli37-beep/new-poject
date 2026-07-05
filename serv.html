@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="./css/serv.css">
+    <link rel="shortcut icon" href="./imagens/watts.jpeg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GM Obras | Orçamento Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <img src="./imagens/WhatsApp Image 2026-03-06 at 07.58.44.jpeg" alt="">
+    <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Voltar</a>
+</header>
+
+<div class="wrapper">
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('construcao')"><i class="fas fa-hammer"></i> CONSTRUÇÃO</button>
+        <button class="tab-btn" onclick="switchTab('reforma')"><i class="fas fa-paint-roller"></i> REFORMA</button>
+    </div>
+
+    <div id="construcao" class="content-section active">
+        <div class="info-grid">
+            <div class="info-text">
+                <h2>Obras e Projetos</h2>
+                <div class="form-title">Serviços Disponíveis:</div>
+                <div class="options-grid">
+                    <label class="option-card"><input type="checkbox" class="item" value="Construções Residenciais"> Construções Residenciais</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Construções Comerciais e Industriais"> Construções Comerciais e Industriais</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Obras Turn-Key"> Obras Turn-Key (Chave na Mão)</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Gestão e Gerenciamento de Obras"> Gestão e Gerenciamento de Obras</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Ampliações e Novas Estruturas"> Ampliações e Novas Estruturas</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Projetos Arquitetônicos"> Projetos Arquitetônicos</label>
+                </div>
+            </div>
+            <div class="info-image" style="background-image: url('./imagens/foto1.jpg');"></div>
+        </div>
+    </div>
+
+    <div id="reforma" class="content-section">
+        <div class="info-grid">
+            <div class="info-text">
+                <h2>Reformas e Reparos</h2>
+                <div class="form-title">Serviços de Acabamento:</div>
+                <div class="options-grid">
+                    <label class="option-card"><input type="checkbox" class="item" value="Reformas Residenciais"> Reformas Residenciais</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Pintura Predial"> Reformas Comerciais e industriais</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Reformas de Alto Padrão"> Reformas de Alto Padrão</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Gesso Drywall"> Gesso Drywall</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Reformas de Anbientes">Reformas de Ambientes</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Pinturas Prediais"> Pinturas Prediais</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="instalações de revestimentos"> instalações de revestimentos</label>
+                </div>
+            </div>
+            <div class="info-image" style="background-image: url('./imagens/obras2.jpeg');"></div>
+        </div>
+    </div>
+
+    <div class="content-section active" style="margin-top: -30px; border-top: none; border-radius: 0 0 12px 12px;">
+        <div class="form-title" style="color: #000;">DADOS PARA CONTATO:</div>
+        <div class="input-group">
+            <input type="text" id="nome" placeholder="Nome Completo">
+            <input type="text" id="tel" placeholder="Telefone (WhatsApp)" maxlength="15">
+        </div>
+        <div class="input-group">
+            <input type="text" id="cidade" placeholder="Cidade">
+            <input type="text" id="endereco" placeholder="Endereço da Obra">
+        </div>
+        <textarea id="obs" rows="3" placeholder="Descreva brevemente sua necessidade..."></textarea>
+
+        <button class="btn-cta" onclick="enviarWhatsApp()">
+            <i class="fab fa-whatsapp"></i> ENVIAR SOLICITAÇÃO
+        </button>
+    </div>
+</div>
+
+<div class="fab-wrapper">
+  <a href="https://wa.me/54999154578" class="fab-btn whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/gmobras_/" class="fab-btn instagram" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
+<script src="./js/main.js"></script>
+
+</body>
+</html>
